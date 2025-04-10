@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:safe_choice/repository/pref_key.dart';
 import 'package:safe_choice/repository/product_repository.dart';
 import 'model/product_model.dart';
 
@@ -35,12 +37,31 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   void initState() {
     super.initState();
-    fetchProducts();
+    getFromPref();
+  }
+
+  getFromPref()async{
+    setState(() => _isLoading = true);
+    allProducts = await PREFSKey.getProductsFromSharedPreferences();
+
+    if(allProducts.isEmpty){
+      fetchProducts();
+
+    }else{
+
+      filteredProducts = List.from(allProducts);
+
+
+    }
+
+    setState(() => _isLoading = false);
+    print("allProducts.length::::${allProducts.length}");
   }
 
   void fetchProducts() async {
     setState(() => _isLoading = true);
     allProducts = await _productRepository.getProducts();
+    await PREFSKey.saveProductToSharedPreferences(allProducts);
     filteredProducts = List.from(allProducts);
     setState(() => _isLoading = false);
   }
@@ -68,12 +89,12 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Products'),
-      //   actions: [
-      //     IconButton(onPressed: fetchProducts, icon: const Icon(Icons.refresh))
-      //   ],
-      // ),
+      appBar: AppBar(
+        title: const Text('Filter Products'),
+        actions: [
+          IconButton(onPressed: fetchProducts, icon: const Icon(Icons.refresh))
+        ],
+      ),
       body: SafeArea(
         child: _isLoading
             ? const Center(child: CircularProgressIndicator())
@@ -98,13 +119,7 @@ class _ProductScreenState extends State<ProductScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Filter Products",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+
                   const SizedBox(height: 16),
 
                   // Category Dropdown
@@ -227,9 +242,17 @@ class ProductCard extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-              child: Image.network(
-                product.image,
-                fit: BoxFit.cover,
+              child: CachedNetworkImage(
+                imageUrl: product.image,
+                fadeInDuration: Duration(milliseconds: 300),
+                placeholder: (context, url) => SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: Center(
+                    child: CircularProgressIndicator(strokeWidth: 1.5),
+                  ),
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
           ),
