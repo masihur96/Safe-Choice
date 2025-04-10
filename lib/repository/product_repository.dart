@@ -5,7 +5,7 @@ import 'data_provider.dart';
 
 class ProductRepository {
   final DataProvider _dataProvider = DataProvider();
-  Future<ProductModel?> getProducts() async {
+  Future< List<ProductModel>> getProducts() async {
     try {
       final header = {"apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53ZG5jamhkZ2trc3ZvbGxwZ3N3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyMTUzMTMsImV4cCI6MjA1OTc5MTMxM30.7CGPTFjI7WwxoN2Xmr-imIhobpqs9yaJX1JGwi9uGfI"};
 
@@ -14,13 +14,26 @@ class ProductRepository {
           header: header);
 
       if (response != null && response.statusCode == 200) {
-        return ProductModel.fromJson(response.data);
+
+        final data = response.data; // This should be List<dynamic>
+
+        if (data is List) {
+          List<ProductModel> products = data
+              .map((item) => ProductModel.fromJson(item as Map<String, dynamic>))
+              .toList();
+
+           return products;
+        } else {
+          print("Unexpected data format: ${data.runtimeType}");
+          return [];
+        }
+
       } else {
-        return null;
+        return [];
       }
     } catch (e) {
       print("Error fetching notifications: $e");
-      return null;
+      return [];
     }
   }
 }
