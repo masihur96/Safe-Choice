@@ -115,7 +115,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       Expanded(
                         child: DropdownButtonFormField<String>(
                           decoration: const InputDecoration(
-                            labelText: "Category",
+                            labelText: "Alternet of",
                             border: OutlineInputBorder(),
                           ),
                           value: selectedCategory,
@@ -253,7 +253,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${product.flag} \$${product.price}',
+                      '${product.country} ${product.flag}',
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.green),
                     ),
