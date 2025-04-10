@@ -1,0 +1,122 @@
+{
+  "categories": [
+    {
+      "name": "Drinks",
+      "subcategories": ["Juices", "Tea", "Energy", "Water"]
+    },
+    {
+      "name": "Snacks",
+      "subcategories": ["Sweets"]
+    },
+    {
+      "name": "Personal Care",
+      "subcategories": ["Skin Care", "Hair Care"]
+    },
+    {
+      "name": "Groceries",
+      "subcategories": ["Natural", "Dry Fruits"]
+    }
+  ],
+  "products": [
+    {
+      "name": "Apple Juice",
+      "image": "https://via.placeholder.com/150?text=Apple+Juice",
+      "price": 2.99,
+      "country": "USA",
+      "flag": "🇺🇸",
+      "rating": 4.5,
+      "category": "Drinks",
+      "subcategory": "Juices"
+    },
+    {
+      "name": "Orange Juice",
+      "image": "https://via.placeholder.com/150?text=Orange+Juice",
+      "price": 3.49,
+      "country": "Spain",
+      "flag": "🇪🇸",
+      "rating": 4.2,
+      "category": "Drinks",
+      "subcategory": "Juices"
+    },
+    {
+      "name": "Green Tea",
+      "image": "https://via.placeholder.com/150?text=Green+Tea",
+      "price": 1.89,
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "rating": 4.8,
+      "category": "Drinks",
+      "subcategory": "Tea"
+    },
+    {
+      "name": "Energy Drink",
+      "image": "https://via.placeholder.com/150?text=Energy+Drink",
+      "price": 2.5,
+      "country": "Germany",
+      "flag": "🇩🇪",
+      "rating": 3.9,
+      "category": "Drinks",
+      "subcategory": "Energy"
+    },
+    {
+      "name": "Coconut Water",
+      "image": "https://via.placeholder.com/150?text=Coconut+Water",
+      "price": 2.25,
+      "country": "Thailand",
+      "flag": "🇹🇭",
+      "rating": 4.4,
+      "category": "Drinks",
+      "subcategory": "Water"
+    },
+    {
+      "name": "Chocolate Bar",
+      "image": "https://via.placeholder.com/150?text=Chocolate+Bar",
+      "price": 1.5,
+      "country": "Switzerland",
+      "flag": "🇨🇭",
+      "rating": 4.7,
+      "category": "Snacks",
+      "subcategory": "Sweets"
+    },
+    {
+      "name": "Face Wash",
+      "image": "https://via.placeholder.com/150?text=Face+Wash",
+      "price": 5.99,
+      "country": "South Korea",
+      "flag": "🇰🇷",
+      "rating": 4.3,
+      "category": "Personal Care",
+      "subcategory": "Skin Care"
+    },
+    {
+      "name": "Shampoo",
+      "image": "https://via.placeholder.com/150?text=Shampoo",
+      "price": 4.75,
+      "country": "India",
+      "flag": "🇮🇳",
+      "rating": 4.0,
+      "category": "Personal Care",
+      "subcategory": "Hair Care"
+    },
+    {
+      "name": "Honey",
+      "image": "https://via.placeholder.com/150?text=Honey",
+      "price": 6.0,
+      "country": "Yemen",
+      "flag": "🇾🇪",
+      "rating": 4.9,
+      "category": "Groceries",
+      "subcategory": "Natural"
+    },
+    {
+      "name": "Dates",
+      "image": "https://via.placeholder.com/150?text=Dates",
+      "price": 3.99,
+      "country": "Saudi Arabia",
+      "flag": "🇸🇦",
+      "rating": 4.6,
+      "category": "Groceries",
+      "subcategory": "Dry Fruits"
+    }
+  ]
+}
