@@ -276,22 +276,22 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${product.country} ${product.flag}',
+                      '${product.flag} ${product.country}',
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.green),
                     ),
-                    Row(
-                      children: List.generate(
-                        5,
-                            (i) => Icon(
-                          i < product.rating
-                              ? Icons.star
-                              : Icons.star_border,
-                          size: 16,
-                          color: Colors.orange,
-                        ),
-                      ),
-                    ),
+                    // Row(
+                    //   children: List.generate(
+                    //     5,
+                    //         (i) => Icon(
+                    //       i < product.rating
+                    //           ? Icons.star
+                    //           : Icons.star_border,
+                    //       size: 16,
+                    //       color: Colors.orange,
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 )
               ],
