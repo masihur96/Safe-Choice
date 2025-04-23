@@ -1,6 +1,7 @@
 class ProductModel {
   ProductModel({
     required this.id,
+    required this.productSerial,
     required this.createdAt,
     required this.name,
     required this.image,
@@ -13,6 +14,7 @@ class ProductModel {
   });
 
   final int id;
+  final int productSerial;
   final DateTime? createdAt;
   final String name;
   final String image;
@@ -25,6 +27,7 @@ class ProductModel {
 
   ProductModel copyWith({
     int? id,
+    int? productSerial,
     DateTime? createdAt,
     String? name,
     String? image,
@@ -37,6 +40,7 @@ class ProductModel {
   }) {
     return ProductModel(
       id: id ?? this.id,
+      productSerial: productSerial ?? this.productSerial,
       createdAt: createdAt ?? this.createdAt,
       name: name ?? this.name,
       image: image ?? this.image,
@@ -52,6 +56,7 @@ class ProductModel {
   factory ProductModel.fromJson(Map<String, dynamic> json){
     return ProductModel(
       id: json["id"] ?? 0,
+      productSerial: json["product_serial"] ?? 0,
       createdAt: DateTime.tryParse(json["created_at"] ?? ""),
       name: json["name"] ?? "",
       image: json["image"] ?? "",
@@ -66,6 +71,7 @@ class ProductModel {
 
   Map<String, dynamic> toJson() => {
     "id": id,
+    "product_serial": productSerial,
     "created_at": createdAt?.toIso8601String(),
     "name": name,
     "image": image,
